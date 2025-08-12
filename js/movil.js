@@ -19,7 +19,7 @@
 
   function iniciarPaso(nombrePaso) {
     const contenedor = document.getElementById("script-container");
-    contenedor.innerHTML = "";
+    contenedor.innerHTML += "\n";
 
     const paso = pasos[nombrePaso];
     if (!paso) {
@@ -28,6 +28,11 @@
     }
 
     const titulo = document.createElement("p");
+    titulo.style.fontWeight = "bold";
+    titulo.style.fontSize = "1.2em";
+    titulo.style.marginBottom = "8px";
+    titulo.style.whiteSpace = "pre-line";
+    titulo.style.textDecoration = "underline";
     titulo.innerText = paso.pregunta;
     contenedor.appendChild(titulo);
 
@@ -43,9 +48,11 @@
       btn.className = "arbol-btn";
       btn.style.marginRight = "8px";
       btn.onclick = () => {
-        mensaje.innerText = `${opcion.resultado}`;
+        mensaje.innerText += `${opcion.resultado}`;
         if (opcion.siguiente) {
-          setTimeout(() => iniciarPaso(opcion.siguiente), 5000);
+          const botones = contenedor.querySelectorAll(".arbol-btn");
+          botones.forEach((b) => (b.style.display = "none"));
+          setTimeout(() => iniciarPaso(opcion.siguiente), 2000);
         } else {
           const botones = contenedor.querySelectorAll(".arbol-btn");
           botones.forEach((b) => b.remove());
@@ -53,10 +60,6 @@
       };
       contenedor.appendChild(btn);
     });
-
-    if (paso.opciones.length === 0) {
-      mensaje.innerText = "Fin del flujo.\n" + paso.pregunta;
-    }
   }
 
   requestAnimationFrame(() => iniciarPaso("paso1"));

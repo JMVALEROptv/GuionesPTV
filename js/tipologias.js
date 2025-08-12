@@ -106,6 +106,10 @@ const tipologias = [
         titulo: "INCIDENCIA DE INTERNET",
         pasos: ["js/net.js"],
       },
+      {
+        titulo: "INCIDENCIA DE INTERNET RED INDIRECTA",
+        pasos: ["js/netIndirecta.js"],
+      },
     ],
   },
   {
