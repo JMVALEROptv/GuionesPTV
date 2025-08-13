@@ -28,18 +28,7 @@ function Paso({ paso, onBack }) {
     return React.createElement(
       "div",
       { style: { marginLeft: 20, marginBottom: 8 } },
-      React.createElement(
-        "button",
-        {
-          className: "arbol-btn",
-          onClick: () => {
-            setCasoSeleccionado(null);
-            setScriptSrc(null); // limpiar script
-          },
-          style: { marginBottom: 12 },
-        },
-        "← Volver a los casos"
-      ),
+      
       React.createElement(
         "div",
         {},
@@ -94,7 +83,19 @@ function Paso({ paso, onBack }) {
             })
           )
         )
-      )
+      ),
+      React.createElement(
+        "button",
+        {
+          className: "arbol-btn",
+          onClick: () => {
+            setCasoSeleccionado(null);
+            setScriptSrc(null); // limpiar script
+          },
+          style: { marginBottom: 12 },
+        },
+        "← Volver a los casos"
+      ),
     );
   }
 
@@ -106,18 +107,9 @@ function Paso({ paso, onBack }) {
         React.createElement(
           React.Fragment,
           null,
-          React.createElement(
-            "button",
-            {
-              className: "arbol-btn",
-              onClick: onBack,
-              style: { marginBottom: 12 },
-            },
-            "← Volver a tipologías"
-          ),
+          React.createElement("b", {}, paso.titulo),
           React.createElement("br", {})
         ),
-      React.createElement("b", {}, paso.titulo),
       React.createElement(
         "div",
         { style: { marginTop: 8 } },
@@ -138,6 +130,15 @@ function Paso({ paso, onBack }) {
             )
           )
         )
+      ),
+      React.createElement(
+        "button",
+        {
+          className: "arbol-btn",
+          onClick: onBack,
+          style: { marginBottom: 12 },
+        },
+        "← Volver a tipologías"
       )
     );
   }

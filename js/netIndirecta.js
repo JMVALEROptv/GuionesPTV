@@ -243,7 +243,7 @@
         if (opcion.siguiente) {
           const botones = contenedor.querySelectorAll(".arbol-btn");
           botones.forEach((b) => (b.style.display = "none"));
-          setTimeout(() => iniciarPaso(opcion.siguiente), 2000);
+          setTimeout(() => iniciarPaso(opcion.siguiente), 1500);
         } else {
           const botones = contenedor.querySelectorAll(".arbol-btn");
           botones.forEach((b) => b.remove());

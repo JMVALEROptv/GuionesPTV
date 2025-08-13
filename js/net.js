@@ -21,7 +21,7 @@
         { texto: "Sí", siguiente: "paso5", resultado: "El cliente está en domicilio." },
         {
           texto: "No",
-          siguiente: "paso4",
+          siguiente: "paso4ND",
           resultado: "El cliente no está en domicilio.",
         },
       ],
@@ -43,17 +43,11 @@
         },
       ],
     },
-    paso4: {
+    paso4D: {
       pregunta: "Comprobamos U200.",
       opciones: [
         {
-          texto: "No es Fiber issues (el cliente no está en domicilio)",
-          siguiente: null,
-          resultado:
-            "Cargamos incidencia a OYM dejándola abierta e indicando cuándo estará el cliente en domicilio para su resolución.",
-        },
-        {
-          texto: "No es Fiber issues (el cliente está en domicilio)",
+          texto: "No es Fiber issues",
           siguiente: "paso8",
           resultado: "El cliente está en domicilio, seguimos revisando con él.",
         },
@@ -63,7 +57,28 @@
           resultado: "Envío de técnico para resolución.",
         },
         {
-          texto: "Miramos tipología de red",
+          texto: "Miramos tipología de red para ver si es avería general o particular",
+          siguiente: "paso6",
+          resultado: "Revisamos si es avería general o particular.",
+        },
+      ],
+    },
+        paso4ND: {
+      pregunta: "Comprobamos U200.",
+      opciones: [
+        {
+          texto: "No es Fiber issues",
+          siguiente: null,
+          resultado:
+            "Cargamos incidencia a OYM dejándola abierta e indicando cuándo estará el cliente en domicilio para su resolución.",
+        },
+        {
+          texto: "Sí es Fiber issues",
+          siguiente: null,
+          resultado: "Envío de técnico para resolución.",
+        },
+        {
+          texto: "Miramos tipología de red para ver si es avería general o particular",
           siguiente: "paso6",
           resultado: "Revisamos si es avería general o particular.",
         },
@@ -79,7 +94,7 @@
         },
         {
           texto: "No, niveles con error",
-          siguiente: "paso4",
+          siguiente: "paso4D",
           resultado: "Revisamos en U200 el estado de la ONT.",
         },
       ],
@@ -220,7 +235,7 @@
         if (opcion.siguiente) {
           const botones = contenedor.querySelectorAll(".arbol-btn");
           botones.forEach((b) => (b.style.display = "none"));
-          setTimeout(() => iniciarPaso(opcion.siguiente), 2000);
+          setTimeout(() => iniciarPaso(opcion.siguiente), 1500);
         } else {
           const botones = contenedor.querySelectorAll(".arbol-btn");
           botones.forEach((b) => b.remove());

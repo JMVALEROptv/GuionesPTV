@@ -103,11 +103,15 @@ const tipologias = [
     titulo: "Gestiones Tecnicas",
     pasos: [
       {
-        titulo: "INCIDENCIA DE INTERNET",
+        titulo: "Incidencias de Fijo",
+        pasos: ["js/fijo.js"],
+      },
+      {
+        titulo: "Incidencias de Internet",
         pasos: ["js/net.js"],
       },
       {
-        titulo: "INCIDENCIA DE INTERNET RED INDIRECTA",
+        titulo: "Incidencias de Internet Red Indirecta",
         pasos: ["js/netIndirecta.js"],
       },
     ],

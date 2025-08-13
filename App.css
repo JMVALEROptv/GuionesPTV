@@ -47,6 +47,12 @@ footer {
   color: var(--footer-text, #888);
 }
 
+b {
+  font-size: xx-large;
+  color: var(--leaf-text, #000000);
+  margin-bottom: 18px;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --container-bg: #23272f;
